@@ -5,6 +5,11 @@
  */
 package personaltwitterfeed;
 
+
+import java.util.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -15,10 +20,11 @@ public class PersonalTwitterFeed {
 
     private static int MAX_NUMBER_TWEETS = 200;
     
-    /**
-     * @param args the command line arguments
-     */
+
+
     public static void main(String[] args) {
+ 
+        getCurrentTime(); 
         String[] tweets = new String[MAX_NUMBER_TWEETS];
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Welcome to your personal Twitter!");
@@ -29,6 +35,7 @@ public class PersonalTwitterFeed {
         System.out.println("Nice to meet you " + tweeterName + "!");
         System.out.println("Enter your tweets and I will add them to your timeline!");
         
+        
         int numTweets = 0;
         
         while(numTweets < (MAX_NUMBER_TWEETS - 1)) {
@@ -38,6 +45,7 @@ public class PersonalTwitterFeed {
             System.out.println(tweeterName + "'s Personal Twitter Feed:");
             for(int i = 0; i < numTweets; i++) {
                 System.out.println("- " + tweets[i]);
+                System.out.println(getCurrentTime());
             }
             
             System.out.println();
@@ -50,6 +58,16 @@ public class PersonalTwitterFeed {
         }
         
         System.out.println("Your twitter feed is full");
+                
     }
-    
+        public static String getCurrentTime(){
+         String pattern = "EEEEE dd MMMMM yyyy HH:mm:ss.SSSZ";
+         SimpleDateFormat simpleDateFormat =
+         new SimpleDateFormat(pattern, new Locale("da", "DK"));
+
+        String date = simpleDateFormat.format(new Date());
+        return date;
+             
+    }
+   
 }
