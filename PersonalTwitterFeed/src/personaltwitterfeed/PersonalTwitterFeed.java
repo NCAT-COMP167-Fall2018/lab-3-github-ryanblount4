@@ -25,7 +25,7 @@ public class PersonalTwitterFeed {
     public static void main(String[] args) {
  
         getCurrentTime(); 
-        String[] tweets = new String[MAX_NUMBER_TWEETS];
+        
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Welcome to your personal Twitter!");
         System.out.println("What's your name, tweeter?");
@@ -34,11 +34,27 @@ public class PersonalTwitterFeed {
         
         System.out.println("Nice to meet you " + tweeterName + "!");
         System.out.println("Enter your tweets and I will add them to your timeline!");
+        newTweet();
         
-        
-        int numTweets = 0;
-        
-        while(numTweets < (MAX_NUMBER_TWEETS - 1)) {
+        }
+        public static String getCurrentTime(){
+         String pattern = "EEEEE dd MMMMM yyyy HH:mm:ss.SSSZ";
+         SimpleDateFormat simpleDateFormat =
+         new SimpleDateFormat(pattern, new Locale("da", "DK"));
+
+        String date = simpleDateFormat.format(new Date());
+        return date;
+             
+    }
+        public static void newTweet(){
+            
+           String[] tweets = new String[MAX_NUMBER_TWEETS];
+            
+           int numTweets = 0;
+           
+           String tweeterName = keyboard.nextLine();
+           
+           while(numTweets < (MAX_NUMBER_TWEETS - 1)) {
             tweets[numTweets] = keyboard.nextLine();
             numTweets++;
             
@@ -58,16 +74,8 @@ public class PersonalTwitterFeed {
         }
         
         System.out.println("Your twitter feed is full");
-                
-    }
-        public static String getCurrentTime(){
-         String pattern = "EEEEE dd MMMMM yyyy HH:mm:ss.SSSZ";
-         SimpleDateFormat simpleDateFormat =
-         new SimpleDateFormat(pattern, new Locale("da", "DK"));
-
-        String date = simpleDateFormat.format(new Date());
-        return date;
-             
-    }
+        
+        }
+        
    
 }
